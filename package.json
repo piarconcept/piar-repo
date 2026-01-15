@@ -1,0 +1,23 @@
+{
+  "name": "piar-repo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "typecheck": "turbo typecheck"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.28.0",
+  "devDependencies": {
+    "turbo": "^2.7.4",
+    "typescript": "^5.9.3"
+  },
+  "private": true,
+  "engines": {
+    "node": "20.x"
+  }
+}
