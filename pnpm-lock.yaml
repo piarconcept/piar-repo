@@ -101,6 +101,25 @@ importers:
         specifier: ^5
         version: 5.9.3
 
+  packages/domain/fields:
+    dependencies:
+      '@piar/domain-models':
+        specifier: workspace:*
+        version: link:../models
+    devDependencies:
+      '@types/node':
+        specifier: ^20.17.10
+        version: 20.19.29
+      '@vitest/coverage-v8':
+        specifier: ^2.1.8
+        version: 2.1.9(vitest@2.1.9(@types/node@20.19.29))
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
+      vitest:
+        specifier: ^2.1.8
+        version: 2.1.9(@types/node@20.19.29)
+
   packages/domain/models:
     devDependencies:
       '@vitest/coverage-v8':

@@ -1,0 +1,38 @@
+{
+  "name": "@piar/domain-fields",
+  "version": "0.0.1",
+  "description": "Field configuration and metadata system for entities",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "test": "vitest",
+    "test:coverage": "vitest --coverage"
+  },
+  "keywords": [
+    "fields",
+    "metadata",
+    "configuration",
+    "entities",
+    "validation"
+  ],
+  "author": "Piar Concept <contact@piarconcept.com> (https://piarconcept.com)",
+  "license": "MIT",
+  "dependencies": {
+    "@piar/domain-models": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^20.17.10",
+    "@vitest/coverage-v8": "^2.1.8",
+    "typescript": "^5.9.3",
+    "vitest": "^2.1.8"
+  }
+}

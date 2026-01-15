@@ -50,24 +50,27 @@ docs/
 ### 🏗️ Setup & Configuration (Read First)
 1. **[setup-proyecto.md](features/setup-proyecto.md)** - Initial project setup and structure
 2. **[repository-configuration.md](features/repository-configuration.md)** ⚠️ **CRITICAL** - Monorepo rules and conventions
+3. **[github-workflows.md](features/github-workflows.md)** - GitHub Actions CI/CD workflows
 
 ### 📦 Development Guides
-3. **[creating-packages.md](features/creating-packages.md)** - Complete guide for creating new packages (13 steps)
-4. **[testing-guide.md](features/testing-guide.md)** - Testing standards, patterns, and examples with Vitest
-5. **[eslint-configuration.md](features/eslint-configuration.md)** - ESLint setup, rules, and linting across monorepo
+4. **[creating-packages.md](features/creating-packages.md)** - Complete guide for creating new packages (14 steps)
+5. **[testing-guide.md](features/testing-guide.md)** - Testing standards, patterns, and examples with Vitest
+6. **[eslint-configuration.md](features/eslint-configuration.md)** - ESLint setup, rules, and linting across monorepo
 
 ### 📚 Package Documentation
-6. **[domain-models.md](features/domain-models.md)** - `@piar/domain-models` package documentation
+7. **[domain-models.md](features/domain-models.md)** - `@piar/domain-models` package documentation
+8. **[domain-fields.md](features/domain-fields.md)** - `@piar/domain-fields` package documentation (field configuration system)
 
 ### 📝 Templates
-7. **[TEMPLATE.md](features/TEMPLATE.md)** - Template for creating new documentation
+9. **[TEMPLATE.md](features/TEMPLATE.md)** - Template for creating new documentation
 
 ## Quick Reference
 
 ### Creating a New Package
-1. Read: [creat3ng-packages.md](features/creating-packages.md)
-2. Follow the 12 steps
+1. Read: [creating-packages.md](features/creating-packages.md)
+2. Follow the 14 steps
 3. Document in `docs/features/`
+4. Update this index
 4. Update this index
 
 ### Adding a New Feature
