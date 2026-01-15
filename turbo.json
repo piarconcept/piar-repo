@@ -6,6 +6,20 @@
       "dependsOn": ["^build"],
       "outputs": [".next/**", "dist/**", ".serverless/**"]
     },
-    "typecheck": { "dependsOn": ["^typecheck"] }
+    "typecheck": { "dependsOn": ["^typecheck"] },
+    "lint": {
+      "dependsOn": ["^lint"],
+      "cache": true
+    },
+    "test": {
+      "dependsOn": ["^build"],
+      "cache": false,
+      "outputs": ["coverage/**"]
+    },
+    "test:coverage": {
+      "dependsOn": ["^build"],
+      "cache": false,
+      "outputs": ["coverage/**"]
+    }
   }
 }

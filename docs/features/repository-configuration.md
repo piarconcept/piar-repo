@@ -35,14 +35,16 @@ Document critical repository configuration decisions and conventions that must b
 ```
 piar-repo/                    # Root only
 ├── .gitignore                # Root ignore file (comprehensive)
+├── eslint.config.mjs         # Root ESLint configuration
+├── vitest.config.ts          # Workspace test configuration
 ├── package.json              # Root package with workspace scripts
 ├── pnpm-workspace.yaml       # ONLY ONE - at root level
-├── turbo.json               # Turbo configuration
-└── apps/                    # Each app has its own package.json
+├── turbo.json                # Turbo configuration
+└── apps/                     # Each app has its own package.json
     ├── api/
     ├── client/
-    │   ├── backoffice/      # package.json: @piar/backoffice
-    │   └── web/             # package.json: @piar/web
+    │   ├── backoffice/       # package.json: @piar/backoffice
+    │   └── web/              # package.json: @piar/web
     └── lambda/
 ```
 
@@ -56,7 +58,7 @@ piar-repo/                    # Root only
 
 ✅ **ALWAYS do these**:
 1. Add new apps to the workspace structure defined in root `pnpm-workspace.yaml`
-2. Use scoped package names (`@piar/package-name`)
+2. Use scoped package nand `lint` scripts in alle`)
 3. Include `typecheck` script in all TypeScript packages
 4. Update documentation when changing configuration
 
@@ -81,6 +83,9 @@ Defines task dependencies and caching strategy:
 - `dev`: No cache, persistent
 - `build`: Cached, depends on upstream builds
 - `typecheck`: Depends on upstream typechecks
+- `lint`: Cached, depends on upstream linting
+- `test`: No cache, depends on builds, outputs coverage
+- `test:coverage`: Same as test, explicit coverage output
 
 ## Usage
 
@@ -106,19 +111,29 @@ pnpm install
 pnpm --filter @piar/backoffice dev
 pnpm --filter @piar/web build
 
-# Run command across all packages
-pnpm turbo build
-pnpm turbo typecheck
+# Run workspace commands via turbo
+pnpm turbo build            # Build all packages
+pnpm turbo typecheck        # Type check all packages
+pnpm turbo lint             # Lint all packages
+pnpm test                   # Run all tests
+pnpm test:coverage -- --run # Run all tests with coverage
+
+# Complete verification
+pnpm verify                 # Runs all checks: install, build, typecheck, test, lint
 ```
 
 ## Related Documentation
 - Main AI Context: `docs/AI-context.md`
 - Project Setup: `docs/features/setup-proyecto.md`
+- Testing Guide: `docs/features/testing-guide.md`
+- ESLint Configuration: `docs/features/eslint-configuration.md`
 
 ## Notes
 - This configuration supports efficient monorepo management with shared dependencies
 - Turbo caching significantly speeds up repeated builds
 - Scoped package names prevent naming conflicts in the pnpm workspace
+- Root configurations (eslint.config.mjs, vitest.config.ts) are shared across packages
 
 ## Last Updated
+15 January 2026 - Added ESLint and complete verification documentation
 15 January 2026 - Fixed workspace configuration, removed duplicate pnpm-workspace.yaml files, added package scoping

@@ -1,11 +1,24 @@
-# AI Context
+# AI Context - PIAR Monorepo
 
-This file works as an index for agents working on the project.
+**START HERE** - This file is the main index for AI agents and developers working on this project.
 
 ## Repository language policy
 - The entire repository must be in English unless content is a translation for the website in other languages.
 
-## Documentation guidelines (CRITICAL)
+## Documentation Structure
+
+```
+docs/
+├── AI-context.md          # 👈 You are here - Main index
+└── features/              # Detailed documentation
+    ├── TEMPLATE.md                    # Template for new docs
+    ├── setup-proyecto.md              # Project setup
+    ├── repository-configuration.md    # ⚠️ CRITICAL configuration
+    ├── creating-packages.md           # 📦 Package creation guide
+    └── domain-models.md               # Domain entities package
+```
+
+## Documentation Guidelines (CRITICAL)
 
 **ALWAYS follow these rules to maintain coherence and avoid inconsistencies:**
 
@@ -32,12 +45,64 @@ This file works as an index for agents working on the project.
 
 7. **Keep index updated**: When adding new documentation files, IMMEDIATELY update the Features section below.
 
-## Features
-- Project setup: `docs/features/setup-proyecto.md`
-- Repository configuration: `docs/features/repository-configuration.md` ⚠️ CRITICAL
-- Documentation template: `docs/features/TEMPLATE.md` (use this for new features)
+## Documentation Index
 
-## How to use
-- Add new features inside `docs/features/`.
-- Keep this index updated when you add or rename files.
-- NEVER make determinant changes without documenting them properly.
+### 🏗️ Setup & Configuration (Read First)
+1. **[setup-proyecto.md](features/setup-proyecto.md)** - Initial project setup and structure
+2. **[repository-configuration.md](features/repository-configuration.md)** ⚠️ **CRITICAL** - Monorepo rules and conventions
+
+### 📦 Development Guides
+3. **[creating-packages.md](features/creating-packages.md)** - Complete guide for creating new packages (13 steps)
+4. **[testing-guide.md](features/testing-guide.md)** - Testing standards, patterns, and examples with Vitest
+5. **[eslint-configuration.md](features/eslint-configuration.md)** - ESLint setup, rules, and linting across monorepo
+
+### 📚 Package Documentation
+6. **[domain-models.md](features/domain-models.md)** - `@piar/domain-models` package documentation
+
+### 📝 Templates
+7. **[TEMPLATE.md](features/TEMPLATE.md)** - Template for creating new documentation
+
+## Quick Reference
+
+### Creating a New Package
+1. Read: [creat3ng-packages.md](features/creating-packages.md)
+2. Follow the 12 steps
+3. Document in `docs/features/`
+4. Update this index
+
+### Adding a New Feature
+1. Create file in `docs/features/`
+2. Use [TEMPLATE.md](features/TEMPLATE.md) as base
+3. Update this index
+
+### Before Making Changes
+1. Check [repository-configuration.md](features/repository-configuration.md)
+2. Review existing docs in `docs/features/`
+3. Understand current structure
+
+## How to Use This Documentation
+
+For **AI Agents**:
+1. Start here - read this entire file
+2. Read [repository-configuration.md](features/repository-configuration.md) next (CRITICAL)
+3. Check relevant feature docs before making changes
+4. Always update docs after making changes
+
+For **Developers**:
+1. Start with [README.md](../README.md) at root
+2. Come here for detailed guidelines
+3. Reference specific feature docs as needed
+
+## Rules Summary
+
+✅ **ALWAYS DO**:
+- Document all decisions in `docs/features/`
+- Update this index when adding docs
+- Follow existing patterns and conventions
+- Check docs before making changes
+
+❌ **NEVER DO**:
+- Make structural changes without documenting
+- Skip updating documentation
+- Create duplicate documentation
+- Ignore existing conventions

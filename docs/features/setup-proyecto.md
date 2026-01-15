@@ -75,6 +75,94 @@ pnpm build
 pnpm --filter @app/backoffice build
 ```
 
+### Test
+```bash
+# Run all tests
+pnpm test
+
+# Run with coverage
+pnpm test:coverage
+
+# Run tests for specific package
+pnpm --filter @piar/domain-models test
+```
+
+## CI/CD Integration
+
+### Complete Verification Script
+
+The repository includes a verification script that runs all checks:
+
+```bash
+# Run complete verification
+pnpm verify
+```
+
+This executes:
+1. ✅ Install dependencies
+2. ✅ Build all packages
+3. ✅ Type check
+4. ✅ Run all tests with coverage
+5. ✅ Lint all code
+
+### Pre-commit Checklist
+```bash
+# 1. Type check
+pnpm typecheck
+
+# 2. Lint code
+pnpm lint
+
+# 3. Run tests
+pnpm test
+
+# 4. Build
+pnpm build
+
+# Or run all at once
+pnpm verify
+```
+
+### CI Pipeline Example
+```yaml
+# Example GitHub Actions workflow
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 10.28.0
+      
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+      
+      - name: Install dependencies
+        run: pnpm install
+      
+      - name: Type check
+        run: pnpm typecheck
+      
+      - name: Lint code
+        run: pnpm lint
+      
+      - name: Run tests with coverage
+        run: pnpm test:coverage -- --run
+      
+      - name: Build
+        run: pnpm build
+```
+
+All commands use Turbo for optimal caching and parallel execution.
+
 ## Related Documentation
 - Main AI Context: `docs/AI-context.md`
 - Template for new features: `docs/features/TEMPLATE.md`
@@ -85,5 +173,5 @@ pnpm --filter @app/backoffice build
 - Keep the Features index in AI-context.md updated
 
 ## Last Updated
-15 January 2026 - Complete project setup documentation with structure and commands
+15 January 2026 - Added testing commands and CI/CD integration guidelines
 
