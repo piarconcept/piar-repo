@@ -1,7 +1,7 @@
 # Domain Models Package
 
 ## Purpose
-Centralized package for domain entities and models shared across all applications (web, backoffice, api, lambda). Ensures consistency and type safety across the entire monorepo.
+Centralized package for domain entities and models shared across all applications (web, backoffice, api, sqs). Ensures consistency and type safety across the entire monorepo.
 
 ## Status
 - [x] Completed - Build verified working ✅
@@ -275,7 +275,7 @@ export class AccountEntity extends BaseEntity implements AccountEntityProps {
 ```
 
 **Entity fconfigured with 100% coverage** ✅ - See [testing-guide.md](testing-guide.md)
-- All apps (web, backoffice, api, lambda) should use these types
+- All apps (web, backoffice, api, sqs) should use these types
 - Maintain backwards compatibility when possible, document breaking changes
 - The `dist/` folder is cached by turbo for faster rebuilds
 - `.gitignore` excludes build artifacts (dist, node_modules, .turbo, coverage)

@@ -14,18 +14,21 @@ piar-repo/
 ├── vitest.config.ts           # Workspace test configuration
 ├── coverage/                  # Test coverage reports (gitignored)
 ├── apps/
-│   ├── api/                    # Backend API
+│   ├── api/                   # Backend APIs
+│   │   ├── web-bff/          # @piar/web-bff - BFF for web client (NestJS)
+│   │   └── backoffice-bff/   # @piar/backoffice-bff - BFF for backoffice (NestJS)
 │   ├── client/
-│   │   ├── backoffice/        # Admin application (Next.js)
-│   │   └── web/               # Public website (Next.js)
-│   └── lambda/                # Serverless functions
+│   │   ├── backoffice/       # @piar/backoffice - Admin application (Next.js)
+│   │   └── web/              # @piar/web - Public website (Next.js)
+│   └── sqs/                  # SQS queue handlers (data sync, migrations, etc.)
 ├── packages/
 │   └── domain/
-│       └── models/            # @piar/domain-models - Shared entities
-├── docs/                      # 📚 Documentation (AI Context)
-│   ├── AI-context.md         # Main index and guidelines
-│   └── features/             # Feature-specific documentation
-└── turbo.json                # Turbo build configuration
+│       ├── models/           # @piar/domain-models - Shared entities
+│       └── fields/           # @piar/domain-fields - Field configuration system
+├── docs/                     # 📚 Documentation (AI Context)
+│   ├── AI-context.md        # Main index and guidelines
+│   └── features/            # Feature-specific documentation
+└── turbo.json               # Turbo build configuration
 ```
 
 ## 🚀 Quick Start
@@ -52,10 +55,59 @@ pnpm verify
 # Start development
 pnpm turbo dev
 ```
+Applications
 
-## 📦 Packages
+#### @piar/web-bff
+Backend for Frontend API for the web application (NestJS).
 
-### @piar/domain-models
+```bash
+# Start in dev mode
+pnpm --filter @piar/web-bff dev
+
+# Build
+pnpm turbo build --filter=@piar/web-bff
+```
+
+Runs on: `http://localhost:5000`  
+[→ Documentation](./apps/api/web-bff/README.md)
+
+#### @piar/backoffice-bff
+Backend for Frontend API for the backoffice application (NestJS).
+
+```bash
+# Start in dev mode
+pnpm --filter @piar/backoffice-bff dev
+
+# Build
+pnpm turbo build --filter=@piar/backoffice-bff
+```
+
+Runs on: `http://localhost:5050`  
+[→ Documentation](./apps/api/backoffice-bff/README.md)
+
+#### @piar/web
+Public website application (Next.js).
+
+```bash
+# Start in dev mode
+pnpm --filter @piar/web dev
+```
+
+[→ Documentation](./apps/client/web/README.md)
+
+#### @piar/backoffice
+Admin backoffice application (Next.js).
+
+```bash
+# Start in dev mode
+pnpm --filter @piar/backoffice dev
+```
+
+[→ Documentation](./apps/client/backoffice/README.md)
+
+### Shared Packages
+
+#### @piar/domain-models
 Shared domain entities and models used across all applications.
 
 ```bash
@@ -68,17 +120,53 @@ pnpm --filter @piar/domain-models dev
 
 [→ Documentation](./packages/domain/models/README.md)
 
-## 🏗️ Development
+#### @piar/domain-fields
+Field all apps in development mode
+pnpm turbo dev
 
+# Run specific app
+pnpm --filter @piar/web-bff dev
+pnpm --filter @piar/backoffice-bff dev
+pnpm --filter @piar/backoffice dev
+pnpm --filter @piar/web dev
+```
+
+### Development Ports
+
+- **Web Client**: `http://localhost:3000`
+- **Backoffice Client**: `http://localhost:3030`
+- **Web BFF**: `http://localhost:5000`
+- **Backoffice BFF**: `http://localhost:5050`14-step guide for new packages
+- **[Testing Guide](./docs/features/testing-guide.md)** - Testing standards and examples
+- **[ESLint Configuration](./docs/features/eslint-configuration.md)** - Linting setup and rules
+- **[Domain Models](./docs/features/domain-models.md)** - Entity package documentation
+- **[Domain Fields](./docs/features/domain-fields.md)** - Field configuration system
+- **[Web BFF](./docs/features/web-bff-application.md)** - Web BFF API documentation
+- **[Backoffice BFF](./docs/features/backoffice-bff-application.md)** - Backoffice BFF API documentation
+```
+
+
+- **Package Manager**: pnpm 10.28.0 with workspaces
+- **Build System**: Turbo 2.7.4 for caching and orchestration
+- **Frontend**: Next.js 16.1.2, React 19.2.3
+- **Backend**: NestJS 11.x
+- **Language**: TypeScript 5.9.3 (strict mode)
+- **Testing**: Vitest 2.1.8 with @vitest/coverage-v8
+- **Linting**: ESLint 9.x with TypeScript support
 ### Build Commands
 
 ```bash
 # Build all packages and apps
-pnpm turbo build
-
-# Build specific package/app
+pnpm turbweb-bff` - Web BFF API
+- `@piar/backoffice-bff` - Backoffice BFF API
+- `@piar/web` - Public website
+- `@piar/backoffice` - Admin app
+- `@piar/domain-models` - Domain entities
+- `@piar/domain-fields` - Field configuration
 pnpm turbo build --filter=@piar/backoffice
-
+ead [docs/AI-context.md](./docs/AI-context.md) - Main guidelines
+2. Check [repository-configuration.md](./docs/features/repository-configuration.md) - Critical rules
+3. Document changes in `docs/features/`
 # Type check all
 
 # Lint all code

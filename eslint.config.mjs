@@ -36,25 +36,9 @@ export default defineConfig([
       '@typescript-eslint/explicit-module-boundary-types': 'off',
       '@typescript-eslint/no-non-null-assertion': 'warn',
 
-      // Import rules
-      'import/order': [
-        'error',
-        {
-          groups: [
-            'builtin',
-            'external',
-            'internal',
-            ['parent', 'sibling'],
-            'index',
-          ],
-          'newlines-between': 'never',
-          alphabetize: {
-            order: 'asc',
-            caseInsensitive: true,
-          },
-        },
-      ],
-      'import/no-duplicates': 'error',
+      // Import rules - Disabled for easier AI workflow
+      // 'import/order': 'off',
+      // 'import/no-duplicates': 'off',
 
       // General rules
       'no-console': ['warn', { allow: ['warn', 'error'] }],

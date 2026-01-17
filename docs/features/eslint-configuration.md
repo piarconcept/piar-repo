@@ -240,7 +240,7 @@ Add to `.vscode/settings.json`:
 
 - [ ] Add Prettier integration
 - [ ] Add pre-commit hooks with husky + lint-staged
-- [ ] Add custom rules for API and Lambda packages
+- [ ] Add custom rules for API and SQS packages
 - [ ] Configure import path aliases resolution
 
 ## Notes

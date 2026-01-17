@@ -1,0 +1,47 @@
+{
+  "name": "@piar/web-bff",
+  "version": "0.1.0",
+  "description": "Backend for Frontend (BFF) API for web application",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "build": "nest build",
+    "dev": "nest start --watch",
+    "start": "nest start",
+    "start:dev": "nest start --watch",
+    "start:debug": "nest start --debug --watch",
+    "start:prod": "node dist/main",
+    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\"",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest",
+    "test:coverage": "vitest --coverage --passWithNoTests"
+  },
+  "dependencies": {
+    "@nestjs/common": "^11.0.16",
+    "@nestjs/config": "^3.3.0",
+    "@nestjs/core": "^11.0.16",
+    "@nestjs/platform-express": "^11.0.16",
+    "@piar/health-api": "workspace:*",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.1"
+  },
+  "devDependencies": {
+    "@nestjs/cli": "^11.0.16",
+    "@nestjs/schematics": "^11.0.9",
+    "@nestjs/testing": "^11.0.16",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.10.5",
+    "@typescript-eslint/eslint-plugin": "^8.53.0",
+    "@typescript-eslint/parser": "^8.53.0",
+    "@vitest/coverage-v8": "^2.1.9",
+    "eslint": "^9.39.2",
+    "ts-loader": "^9.5.1",
+    "ts-node": "^10.9.2",
+    "tsconfig-paths": "^4.2.0",
+    "typescript": "^5.9.3",
+    "vitest": "^2.1.9"
+  },
+  "engines": {
+    "node": "20.x"
+  }
+}

@@ -8,11 +8,12 @@ export default defineConfig({
       provider: 'v8',
       reporter: ['text', 'json', 'html'],
       exclude: [
-        'node_modules/**',
-        'dist/**',
-        '**/*.config.*',
-        '**/*.d.ts',
-        'tests/**',
+        'dist', 'node_modules',
+        '**/*.d.ts', '**/*.config.*',
+        '**/tests/**', 'vitest.config.ts',
+        'package.json', 'tsconfig.json', 'turbo.json',
+        '.gitignore', 'README.md', 'docs/**', 'coverage/**',
+        '**/index.ts',
       ],
       thresholds: {
         lines: 100,

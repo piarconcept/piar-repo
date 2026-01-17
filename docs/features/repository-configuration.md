@@ -45,7 +45,7 @@ piar-repo/                    # Root only
     ├── client/
     │   ├── backoffice/       # package.json: @piar/backoffice
     │   └── web/              # package.json: @piar/web
-    └── lambda/
+    └── sqs/                  # SQS queue handlers
 ```
 
 ### Critical Rules

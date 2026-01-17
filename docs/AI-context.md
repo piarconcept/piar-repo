@@ -51,22 +51,37 @@ docs/
 1. **[setup-proyecto.md](features/setup-proyecto.md)** - Initial project setup and structure
 2. **[repository-configuration.md](features/repository-configuration.md)** ⚠️ **CRITICAL** - Monorepo rules and conventions
 3. **[github-workflows.md](features/github-workflows.md)** - GitHub Actions CI/CD workflows
+4. **[bff-architecture.md](features/bff-architecture.md)** - Backend for Frontend (BFF) pattern and implementation
 
 ### 📦 Development Guides
 4. **[creating-packages.md](features/creating-packages.md)** - Complete guide for creating new packages (14 steps)
-5. **[testing-guide.md](features/testing-guide.md)** - Testing standards, patterns, and examples with Vitest
-6. **[eslint-configuration.md](features/eslint-configuration.md)** - ESLint setup, rules, and linting across monorepo
+5. **[creating-features-guide.md](features/creating-features-guide.md)** - Guide for creating features with Clean Architecture (use-cases, controllers, modules)
+6. **[testing-guide.md](features/testing-guide.md)** - Testing standards, patterns, and examples with Vitest
+7. **[eslint-configuration.md](features/eslint-configuration.md)** - ESLint setup, rules, and linting across monorepo
 
 ### 📚 Package Documentation
-7. **[domain-models.md](features/domain-models.md)** - `@piar/domain-models` package documentation
-8. **[domain-fields.md](features/domain-fields.md)** - `@piar/domain-fields` package documentation (field configuration system)
+8. **[domain-models.md](features/domain-models.md)** - `@piar/domain-models` package documentation
+9. **[domain-fields.md](features/domain-fields.md)** - `@piar/domain-fields` package documentation (field configuration system)
 
-### 📝 Templates
-9. **[TEMPLATE.md](features/TEMPLATE.md)** - Template for creating new documentation
+### 🎯 Features
+10. **[health-feature.md](features/health-feature.md)** - Health check feature with Clean Architecture (configuration/api/client)
+
+### 🏢 Applications
+13. **[TEMPLATE.md](features/TEMPLATE.md)** - Template for creating new documentation
 
 ## Quick Reference
 
+### Creating a New Feature
+1. Read: [creating-features-guide.md](features/creating-features-guide.md)
+2. Create three packages: `configuration/`, `api/`, `client/`
+3. Follow Clean Architecture pattern with use-cases
+4. Document in `docs/features/`
+5. Update this index
+
 ### Creating a New Package
+1. Read: [creating-packages.md](features/creating-packages.md)
+2. Follow the 14 steps
+3. Document in `docs/features/`ackage
 1. Read: [creating-packages.md](features/creating-packages.md)
 2. Follow the 14 steps
 3. Document in `docs/features/`

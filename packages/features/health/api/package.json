@@ -1,0 +1,33 @@
+{
+  "name": "@piar/health-api",
+  "version": "0.1.0",
+  "private": true,
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "dev": "tsc --watch",
+    "test": "vitest",
+    "test:coverage": "vitest --coverage"
+  },
+  "dependencies": {
+    "@piar/health-configuration": "workspace:*",
+    "@nestjs/common": "^11.0.16",
+    "@nestjs/core": "^11.0.16"
+  },
+  "devDependencies": {
+    "@nestjs/testing": "^11.0.16",
+    "@types/node": "^22.10.5",
+    "@vitest/coverage-v8": "^2.1.9",
+    "typescript": "^5.9.3",
+    "vitest": "^2.1.9"
+  }
+}

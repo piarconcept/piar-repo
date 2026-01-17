@@ -10,7 +10,7 @@ Document the initial project setup, structure, and baseline steps for new agents
 - **Monorepo structure**: Using a monorepo to share code between multiple apps
 - **Package manager**: pnpm with workspaces for efficient dependency management
 - **Build tool**: Turbo for faster builds and caching
-- **Apps structure**: Separated into `api`, `client` (backoffice & web), and `lambda`
+- **Apps structure**: Separated into `api`, `client` (backoffice & web), and `sqs`
 
 ## Technical Details
 
@@ -19,7 +19,7 @@ This is a monorepo containing multiple applications and shared packages:
 - **apps/api**: Backend API
 - **apps/client/backoffice**: Admin/backoffice Next.js application
 - **apps/client/web**: Public-facing Next.js application
-- **apps/lambda**: Serverless functions
+- **apps/sqs**: SQS queue handlers for data synchronization, migrations, and async operations
 - **packages/**: Shared packages used across apps
 - **docs/**: Project documentation (MUST be kept updated)
 
@@ -40,7 +40,7 @@ piar-repo/
 │   ├── client/
 │   │   ├── backoffice/   # Admin application
 │   │   └── web/          # Public website
-│   └── lambda/           # Serverless functions
+│   └── sqs/              # SQS queue handlers
 ├── docs/                 # Documentation (AI Context)
 │   ├── AI-context.md     # Main index and guidelines
 │   └── features/         # Feature-specific docs
