@@ -85,6 +85,7 @@ Start with `AI-context.md`.
 
 - `architecture/fixes/README.md`
 - `architecture/fixes/TEMPLATE.md`
+- `architecture/fixes/2026-09-09-ci-process-preflight-self-match.md`
 - `architecture/fixes/2026-09-09-framework-dependency-alignment.md`
 - `architecture/fixes/2026-09-09-single-owner-dependency-builds.md`
 - `architecture/fixes/2026-06-07-backoffice-feature-boundaries.md`

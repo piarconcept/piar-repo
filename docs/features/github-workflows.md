@@ -6,7 +6,8 @@
 
 ## Overview
 
-This document describes the GitHub Actions workflows configured for continuous integration and deployment in this repository.
+This document describes the single GitHub Actions workflow configured for continuous integration
+in this repository.
 
 ## Workflows
 
@@ -15,7 +16,7 @@ This document describes the GitHub Actions workflows configured for continuous i
 **Trigger**:
 
 - Push to `main` branch
-- Pull requests to `main` branch
+- Manual execution through `workflow_dispatch`
 
 **Purpose**: Runs complete verification of the entire monorepo to ensure code quality and functionality.
 
@@ -24,7 +25,7 @@ This document describes the GitHub Actions workflows configured for continuous i
 1. **Checkout code** - Checks out the repository code
 2. **Setup Node.js** - Installs the exact version from `.nvmrc`
 3. **Install pnpm 10.28.0** - Installs the exact pnpm version used in the project
-4. **Setup pnpm cache** - Caches pnpm store for faster subsequent runs
+4. **Setup pnpm cache** - Uses the cache built into `actions/setup-node`
 5. **Install dependencies** - Runs `pnpm install --frozen-lockfile`
 6. **Run verification** - Executes `pnpm verify` which runs:
    - Local generated artifact cleanup and check
@@ -38,7 +39,6 @@ This document describes the GitHub Actions workflows configured for continuous i
    - Tests without coverage
    - Linting
    - Final generated artifact cleanup and worktree drift check
-7. **Upload coverage** - Uploads coverage reports when the workflow runs coverage as a separate step
 
 **Environment**:
 
@@ -52,10 +52,14 @@ This document describes the GitHub Actions workflows configured for continuous i
 - Reduces installation time on subsequent runs
 - Fallback to latest cache if exact match not found
 
-**Artifacts**:
+Coverage remains available as the local `pnpm test:coverage` command but is not duplicated in CI.
+The verification gate already runs the complete non-coverage test suite.
 
-- Coverage reports are stored only when a workflow step generates coverage output
-- Accessible from workflow run summary
+## Workflow Scope
+
+`CI - Verify` is the only repository workflow. Pull requests do not create a second run; verification
+runs once after changes reach `main`, and maintainers can start the same workflow manually when
+needed. Dependabot version and security updates are not configured for this repository.
 
 ## Usage
 
@@ -76,9 +80,10 @@ This formats tracked and unignored files, cleans generated artifacts, checks art
 3. Select the "CI - Verify" workflow
 4. View the latest runs and their status
 
-### Pull Request Checks
+### Pull Request Verification
 
-All pull requests to `main` will automatically trigger the CI workflow. The PR cannot be merged unless all checks pass.
+Run `pnpm clean` locally before merging a pull request. GitHub runs the complete verification after
+the result is pushed to `main`, avoiding duplicate runs for both the pull request and its merge.
 
 ## Configuration Files
 
@@ -91,7 +96,7 @@ All pull requests to `main` will automatically trigger the CI workflow. The PR c
 1. **Always run `pnpm clean` locally** before pushing to ensure formatting, artifact hygiene, and CI verification pass
 2. **Check CI logs** if a build fails to understand what went wrong
 3. **Keep dependencies updated** to avoid security vulnerabilities
-4. **Monitor coverage reports** when coverage jobs are enabled
+4. **Run `pnpm test:coverage` locally** when coverage evidence is required
 
 ## Troubleshooting
 
@@ -123,12 +128,10 @@ All pull requests to `main` will automatically trigger the CI workflow. The PR c
 
 Potential improvements to consider:
 
-1. **Deployment Workflows** - Add CD workflows for automatic deployment
-2. **Preview Deployments** - Deploy PR previews automatically
-3. **Performance Testing** - Add performance benchmarks
-4. **Security Scanning** - Add dependency vulnerability scanning
-5. **Matrix Testing** - Test on multiple Node.js versions
-6. **Parallel Jobs** - Split tests across multiple jobs for faster execution
+1. **Deployment Workflows** - Add CD workflows only when a product profile requires deployment
+2. **Performance Testing** - Add performance benchmarks
+3. **Security Scanning** - Add bounded scanning only when there is an owner for its findings
+4. **Matrix Testing** - Test on multiple Node.js versions only if the runtime contract expands
 
 ## Related Documentation
 
@@ -145,4 +148,5 @@ Potential improvements to consider:
 
 ## Last Updated
 
-9 September 2026 - Made `.nvmrc` the Node.js 24 source for CI and verification
+9 September 2026 - Reduced Actions to one push/manual Verify workflow and removed duplicate
+coverage, PR, scheduled security, and custom-cache runs

@@ -22,7 +22,11 @@ assert_package_manager() {
 }
 
 find_active_dev_processes() {
-  ps -Ao pid=,ppid=,command= 2>/dev/null | awk \
+  local process_snapshot
+
+  process_snapshot="$(ps -Ao pid=,ppid=,command= 2>/dev/null)" || return 1
+
+  awk \
     -v repo_root="${repo_root}" \
     -v verify_pid="$$" '
       {
@@ -42,7 +46,7 @@ find_active_dev_processes() {
 
         if (is_dev_process) print
       }
-    '
+    ' <<<"${process_snapshot}"
 }
 
 cleanup() {

@@ -6,6 +6,8 @@ This project follows Conventional Commits and keeps a single "Unreleased" sectio
 
 ## Unreleased
 
+- Reduced GitHub Actions to one push/manual verification workflow and fixed the Linux process
+  preflight self-match that made valid CI runs fail.
 - Migrated local development, CI, hooks, engines, and the frozen dependency graph to Node.js
   24.20.0.
 - Added executable runtime and dependency-alignment guards plus Node 24 Tailwind/jsdom regressions.

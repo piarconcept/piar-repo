@@ -73,7 +73,7 @@ Only formats staged files to keep commits fast.
 `pnpm verify` includes:
 
 - exact Node.js, pnpm, workflow, and dependency alignment preflights
-- an active repository-local dev/watch process check
+- an active repository-local dev/watch process check based on a completed process snapshot
 - local generated artifact cleanup
 - generated artifact check
 - reproducible install in an isolated scratch copy
@@ -90,6 +90,10 @@ Only formats staged files to keep commits fast.
 
 `pnpm verify` is the CI parity command. Use `pnpm clean` before final handoff when files were edited locally because it also formats before running `verify`.
 
+The process preflight captures `ps` output before running its `awk` classifier. This prevents the
+classifier process from seeing its own pattern text and falsely reporting itself as an active
+development server on Linux CI runners.
+
 ## Last Updated
 
-9 September 2026 - Added Node.js 24, dependency, process, and tooling-test gates
+9 September 2026 - Made the development-process preflight snapshot-based to avoid CI self-matches

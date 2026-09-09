@@ -191,8 +191,3 @@ This template is created and maintained by Piar Concept.
 
 - Template page: [piar-turbo-template](https://www.piarconcept.com/resources/piar-turbo-template)
 - Website: [piarconcept.com](https://www.piarconcept.com)
-- Support: [support@piarconcept.com](mailto:support@piarconcept.com)
-
-If you want to help us keep building and sharing ambitious open-source tooling:
-
-- Contribute here: [Donations](https://www.piarconcept.com/donations)

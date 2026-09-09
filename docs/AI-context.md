@@ -93,22 +93,23 @@ Start here. This file is the canonical index and rules for documentation and dev
 
 45. `architecture/fixes/README.md` - Index and rules for architecture fix notes
 46. `architecture/fixes/TEMPLATE.md` - Template for architecture fix notes
-47. `architecture/fixes/2026-09-09-framework-dependency-alignment.md` - Repository-owned Next, React, Nest integration, and pnpm compatibility contract
-48. `architecture/fixes/2026-09-09-single-owner-dependency-builds.md` - Graph-owned shared dependency build coordination
-49. `architecture/fixes/2026-06-07-backoffice-feature-boundaries.md` - Backoffice accounts/search feature package boundary fix
-50. `architecture/fixes/2026-05-08-bounded-list-contract.md` - Bounded collection-query contract and removal of whole-table `getAll` reads
-51. `architecture/fixes/2026-05-07-template-wave-clean-baseline.md` - Wave workflow, clean command, and verification hardening baseline
+47. `architecture/fixes/2026-09-09-ci-process-preflight-self-match.md` - Snapshot-based process classification that does not match its own Linux CI command line
+48. `architecture/fixes/2026-09-09-framework-dependency-alignment.md` - Repository-owned Next, React, Nest integration, and pnpm compatibility contract
+49. `architecture/fixes/2026-09-09-single-owner-dependency-builds.md` - Graph-owned shared dependency build coordination
+50. `architecture/fixes/2026-06-07-backoffice-feature-boundaries.md` - Backoffice accounts/search feature package boundary fix
+51. `architecture/fixes/2026-05-08-bounded-list-contract.md` - Bounded collection-query contract and removal of whole-table `getAll` reads
+52. `architecture/fixes/2026-05-07-template-wave-clean-baseline.md` - Wave workflow, clean command, and verification hardening baseline
 
 ### Operational Learning
 
-52. `learning-log/README.md` - Index of resolved incidents and important fixes
-53. `learning-log/2026-09-09-node24-runtime-compatibility.md` - Exact Node.js 24 migration and native compatibility guardrails
-54. `learning-log/2026-06-05-format-check-deleted-files.md` - Format check failed on tracked files deleted in the working tree
-55. `learning-log/TEMPLATE.md` - Template for learning-log entries
+53. `learning-log/README.md` - Index of resolved incidents and important fixes
+54. `learning-log/2026-09-09-node24-runtime-compatibility.md` - Exact Node.js 24 migration and native compatibility guardrails
+55. `learning-log/2026-06-05-format-check-deleted-files.md` - Format check failed on tracked files deleted in the working tree
+56. `learning-log/TEMPLATE.md` - Template for learning-log entries
 
 ### Template Evolution Audits
 
-56. `features/catalonia-os-template-backport-audit.md` - Selective backport audit, fixed-bug inventory, and Terraform extraction roadmap from Catalonia OS
+57. `features/catalonia-os-template-backport-audit.md` - Selective backport audit, fixed-bug inventory, and Terraform extraction roadmap from Catalonia OS
 
 ## Repository Governance
 
