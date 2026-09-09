@@ -18,8 +18,9 @@ Architecture root causes belong in `docs/architecture/fixes/`. Use this director
 
 ## Index
 
+- `2026-09-09-node24-runtime-compatibility.md` - Migrated the exact Node.js runtime without framework drift and added native compatibility tests
 - `2026-06-05-format-check-deleted-files.md` - Format check failed on tracked files deleted in the working tree
 
 ## Last Updated
 
-5 June 2026 - Added deleted-file-safe formatting incident
+9 September 2026 - Added Node.js 24 runtime compatibility learning

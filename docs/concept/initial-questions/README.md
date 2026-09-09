@@ -62,6 +62,8 @@ Before I change the template, answer these initial questions:
    - Are there brand names, terms, colors, or words that must replace PIAR/Piar references?
 
 7. Integrations and infrastructure
+   - Should this project retain the AWS/Terraform infrastructure boilerplate? Answer yes or no.
+   - If no, the complete Terraform profile, including its scripts, workflows, tests, dependencies, and documentation, will be removed during personalization.
    - Where should the product be deployed?
    - Which providers are expected for email, storage, payments, analytics, auth, queues, or search?
    - Which environment variables are already known?
@@ -85,6 +87,7 @@ For a first pass, the user must at least answer:
 - database choice or permission to keep PostgreSQL,
 - whether authentication is needed,
 - default locale and required locales,
+- whether the AWS/Terraform infrastructure profile should be retained,
 - template personalization scope.
 
 If any minimum answer is missing, ask for it before editing.
@@ -116,12 +119,28 @@ Do not blindly replace identity strings without checking whether any attribution
 The AI should:
 
 1. Record or summarize the answers in `docs/concept/`.
-2. Create or update product concept folders before implementation when the scope is non-trivial.
-3. Create the real app folders under `docs/concept/apps/` only after the app map is known.
-4. Produce a replacement plan for template identity before global renames.
-5. Create implementation waves in `docs/waves/` before multi-package feature work.
-6. Run the smallest relevant verification commands after edits.
+2. Apply template-profile choices before feature implementation. If Terraform is rejected, remove
+   every path owned by that profile and verify that no dangling references remain.
+3. Create or update product concept folders before implementation when the scope is non-trivial.
+4. Create the real app folders under `docs/concept/apps/` only after the app map is known.
+5. Produce a replacement plan for template identity before global renames.
+6. Create implementation waves in `docs/waves/` before multi-package feature work.
+7. Run the smallest relevant verification commands after edits.
+
+## Terraform Profile Decision
+
+The parent template may contain a complete AWS/Terraform profile, but retaining it in a generated
+product is always an explicit decision:
+
+- **Yes:** keep the complete profile, record the decision, and leave infrastructure disabled until
+  the required deployment inputs have been reviewed.
+- **No:** remove the profile's infrastructure directory, workflows, scripts, root commands, tests,
+  fixtures, dependencies, and dedicated documentation; update generated files and documentation
+  indexes; then run the repository verification gate.
+
+Do not interpret an unanswered question as consent to retain Terraform. The removal operation must
+use the profile's maintained ownership manifest and must be safe to run more than once.
 
 ## Last Updated
 
-3 June 2026 - Created the initial template question gate for new product setup.
+28 August 2026 - Added the required Terraform profile retention and complete-removal decision.

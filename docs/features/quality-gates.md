@@ -53,8 +53,8 @@ fix(api): handle missing auth token
 
 - **Tool**: husky
 - **Hooks**:
-  - `pre-commit`: runs `pnpm lint-staged`
-  - `commit-msg`: runs commitlint
+  - `pre-commit`: validates Node.js alignment, then runs `pnpm lint-staged`
+  - `commit-msg`: validates Node.js alignment, then runs commitlint
 
 ## lint-staged
 
@@ -72,6 +72,8 @@ Only formats staged files to keep commits fast.
 
 `pnpm verify` includes:
 
+- exact Node.js, pnpm, workflow, and dependency alignment preflights
+- an active repository-local dev/watch process check
 - local generated artifact cleanup
 - generated artifact check
 - reproducible install in an isolated scratch copy
@@ -79,6 +81,7 @@ Only formats staged files to keep commits fast.
 - typecheck
 - format check
 - test participation policy
+- repository tooling regression tests
 - tests without coverage
 - lint
 - final local generated artifact cleanup
@@ -89,4 +92,4 @@ Only formats staged files to keep commits fast.
 
 ## Last Updated
 
-5 June 2026 - Documented deleted-file-safe formatting helper
+9 September 2026 - Added Node.js 24, dependency, process, and tooling-test gates

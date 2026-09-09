@@ -21,6 +21,8 @@ Document critical repository configuration decisions and conventions that must b
 - **Workspaces**: Root `pnpm-workspace.yaml` includes:
   - `apps/**`
   - `packages/**`
+- **Override ownership**: Repository-wide pnpm overrides live only in root
+  `pnpm-workspace.yaml`, not in `package.json`.
 - **TypeScript base config**: All `tsconfig.json` extend `tsconfig.base.json`
 
 ### Build System
@@ -33,10 +35,28 @@ Document critical repository configuration decisions and conventions that must b
   - `lint`: Linting across workspace
   - `test`: Tests without coverage
   - `test:coverage`: Tests with coverage
+- `build`, `typecheck`, `test`, `test:coverage`, `dev`, and `test:watch` finish upstream builds
+  before running consumers.
 
 ### Node Version
 
-- **Node.js 20.x**: Required engine version
+- **Node.js 24.20.0**: Exact local runtime in `.nvmrc`
+- **Engine range**: `>=24.20.0 <25` in every manifest that owns a runtime
+- **CI ownership**: GitHub Actions uses `node-version-file: '.nvmrc'`
+- **Validation**: `pnpm runtime:check` rejects process, manifest, package-manager, and workflow
+  drift before expensive verification starts
+
+### Compatible Framework Contract
+
+- Next.js and `eslint-config-next`: `15.5.25`
+- React and React DOM runtime: `19.1.0`
+- NestJS core: `11.x`
+- `@nestjs/config`: `4.x`; `@nestjs/swagger`: `11.x`
+- TypeScript: `5.9.x`; Node typings: `24.x`
+
+Run `pnpm dependencies:check` after dependency edits. The guard rejects Next 16 leakage, mixed
+React runtime ownership, old Nest integration branches, obsolete React hooks testing utilities,
+and Node type drift.
 
 ## File Structure Conventions
 
@@ -93,7 +113,11 @@ Defines task dependencies and caching:
 - `lint`: cached, depends on upstream linting
 - `test:coverage`: no cache, outputs coverage
 
-App `build` and `dev` scripts should include `build:prepare` or `dev:prepare` steps that build workspace dependencies first. This keeps local Next.js and NestJS startup aligned with package output requirements.
+App `build` and `dev` scripts route dependency preparation through
+`scripts/prepare-workspace.mjs`. Under Turbo, the coordinator does not launch a nested compiler
+because the task graph already owns `^build`. A direct app command invokes Turbo exactly once for
+that app's dependencies. This prevents sibling applications from concurrently rewriting shared
+`dist` output.
 
 ## Usage
 
@@ -114,6 +138,9 @@ App `build` and `dev` scripts should include `build:prepare` or `dev:prepare` st
 
 ```bash
 pnpm install
+pnpm runtime:check
+pnpm dependencies:check
+pnpm test:scripts
 pnpm turbo build
 pnpm turbo typecheck
 pnpm turbo lint
@@ -134,4 +161,4 @@ pnpm clean                # format, clean artifacts, check artifacts, verify
 
 ## Last Updated
 
-7 May 2026 - Added clean command and current verification contract
+9 September 2026 - Added Node.js 24, dependency alignment, and single-owner build contracts

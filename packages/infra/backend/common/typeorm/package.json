@@ -20,7 +20,7 @@
   },
   "dependencies": {
     "@nestjs/common": "^11.0.16",
-    "@nestjs/config": "^3.3.0",
+    "@nestjs/config": "^4.0.4",
     "@nestjs/core": "^11.0.16",
     "@nestjs/typeorm": "^11.0.0",
     "pg": "^8.13.1",
@@ -28,7 +28,7 @@
     "typeorm": "^0.3.22"
   },
   "devDependencies": {
-    "@types/node": "^22.10.5",
+    "@types/node": "^24.13.3",
     "@vitest/coverage-v8": "^2.1.9",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.31.1",

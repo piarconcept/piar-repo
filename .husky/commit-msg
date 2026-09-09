@@ -1,1 +1,2 @@
+node scripts/check-node-runtime.mjs
 pnpm commitlint --edit "$1"

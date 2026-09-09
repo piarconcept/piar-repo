@@ -28,10 +28,12 @@ Create an entry here when the real root cause was related to:
 
 ## Index
 
+- `2026-09-09-framework-dependency-alignment.md` - Established one compatible Next, React, Nest integration, and pnpm override contract.
+- `2026-09-09-single-owner-dependency-builds.md` - Made Turbo the sole owner of scheduled shared builds while preserving direct app preparation.
 - `2026-06-07-backoffice-feature-boundaries.md` - Moved backoffice accounts and search implementation from app-local folders into feature API packages.
 - `2026-05-08-bounded-list-contract.md` - Removed whole-table `getAll` contracts and moved list/search behavior to bounded repository queries.
 - `2026-05-07-template-wave-clean-baseline.md` - Added wave execution docs, cleanup verification, generated artifact hygiene, and app dependency preparation.
 
 ## Last Updated
 
-7 June 2026 - Added backoffice feature boundary architecture fix
+9 September 2026 - Added framework alignment and single-owner dependency-build fixes

@@ -172,6 +172,20 @@ export default defineConfig({
 **Why exclude index.ts?**
 Index files are typically simple re-exports (`export * from './entity'`) and don't contain logic to test. Testing the actual implementations provides full coverage.
 
+### Node.js 24 And jsdom
+
+Vitest 2 with jsdom can replace Node's native `AbortController` and `AbortSignal` while leaving the
+native Undici `Request` constructor installed. Node.js 24 rejects that mixed cancellation graph in
+request/navigation tests.
+
+Packages that need jsdom must use `scripts/vitest-jsdom-environment.mjs`. The shared environment
+preserves Node's native cancellation constructors during jsdom setup and restores the original
+globals during teardown. Do not add a production fetch polyfill or replace browser cancellation
+behavior to solve a test-environment mismatch.
+
+The root tooling tests cover real fetches, aborted requests, DOM availability, cancellation
+propagation, and teardown.
+
 ### Step 3: Add Test Scripts
 
 In `package.json`:

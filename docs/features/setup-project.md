@@ -13,6 +13,7 @@ Document the initial project setup, structure, and baseline steps for new agents
 - **Monorepo structure**: Share code between multiple apps
 - **Package manager**: pnpm with workspaces
 - **Build tool**: Turbo for caching and orchestration
+- **Runtime**: exact Node.js `24.20.0` from `.nvmrc`
 - **Apps structure**: `api`, `client` (backoffice & web), and `sqs`
 
 ## Technical Details
@@ -58,7 +59,10 @@ piar-repo/
 ### Installation
 
 ```bash
+nvm use
+pnpm runtime:check
 pnpm install
+pnpm dependencies:check
 ```
 
 ### Development
@@ -93,16 +97,19 @@ pnpm verify
 
 This executes:
 
-1. Clean generated artifacts
-2. Check generated artifact hygiene
-3. Install dependencies in an isolated scratch copy
-4. Build all packages
-5. Type check
-6. Check formatting
-7. Check test participation policy
-8. Run all tests without coverage
-9. Lint all code
-10. Verify local worktree status does not drift after artifact hygiene
+1. Validate the exact Node.js, pnpm, workflow, and compatible dependency contract
+2. Refuse to run while a repository-local dev/watch process can rewrite artifacts
+3. Clean and check generated artifacts
+4. Install dependencies from the frozen lockfile in an isolated scratch copy
+5. Build all packages
+6. Type check
+7. Check formatting
+8. Check test participation policy
+9. Run repository tooling regression tests
+10. Run all workspace tests without coverage
+11. Lint all code
+12. Clean and recheck generated artifacts
+13. Verify local worktree status does not drift after artifact hygiene
 
 ### Pre-commit Checklist
 
@@ -132,7 +139,7 @@ jobs:
           version: 10.28.0
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version-file: '.nvmrc'
       - name: Install dependencies
         run: pnpm install
       - name: Verify
@@ -148,4 +155,4 @@ jobs:
 
 ## Last Updated
 
-7 May 2026 - Updated verification and cleanup commands
+9 September 2026 - Documented the exact Node.js 24 runtime and compatibility preflights
