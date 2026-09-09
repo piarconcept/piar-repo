@@ -6,6 +6,13 @@ This project follows Conventional Commits and keeps a single "Unreleased" sectio
 
 ## Unreleased
 
+- Migrated local development, CI, hooks, engines, and the frozen dependency graph to Node.js
+  24.20.0.
+- Added executable runtime and dependency-alignment guards plus Node 24 Tailwind/jsdom regressions.
+- Aligned Next.js 15, React 19.1, Node typings, and NestJS 11 integration packages.
+- Made Turbo the single owner of scheduled shared dependency builds.
+- Added the Catalonia OS selective-backport audit and required Terraform retention question for
+  template personalization.
 - Added execution waves docs and templates for feature work and multi-agent planning.
 - Added `pnpm clean` for formatting, artifact hygiene, and final verification.
 - Hardened generated artifact detection and verify cleanup.

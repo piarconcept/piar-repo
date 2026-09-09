@@ -88,17 +88,24 @@ languageOptions: {
 Apps extend root config and add Next.js specific rules:
 
 ```js
-import rootConfig from "../../../eslint.config.mjs";
-import nextVitals from "eslint-config-next/core-web-vitals";
-import nextTs from "eslint-config-next/typescript";
+import { FlatCompat } from '@eslint/eslintrc';
+import { dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import rootConfig from '../../../eslint.config.mjs';
+
+const appDirectory = dirname(fileURLToPath(import.meta.url));
+const compat = new FlatCompat({ baseDirectory: appDirectory });
 
 export default defineConfig([
   ...rootConfig,
-  ...nextVitals,
-  ...nextTs,
-  globalIgnores([...])
+  ...compat.extends('next/core-web-vitals', 'next/typescript'),
+  globalIgnores(['.next/**', 'out/**', 'build/**', 'next-env.d.ts']),
 ]);
 ```
+
+The clients keep `next` and `eslint-config-next` on the same supported 15.5 patch. The
+`@eslint/eslintrc` compatibility layer is required because this Next.js line still exposes legacy
+shareable presets while the repository uses ESLint 9 flat configuration.
 
 ## Package Configuration
 
@@ -492,5 +499,5 @@ The PIAR monorepo uses **two ESLint configuration patterns**:
 
 ---
 
-**Last Updated**: 22 January 2026  
+**Last Updated**: 9 September 2026
 **Configuration**: Root-based with two package patterns (simple extension + complete TypeScript config)

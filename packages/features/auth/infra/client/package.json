@@ -25,7 +25,7 @@
     "@piar/infra-client-common-http": "workspace:*"
   },
   "devDependencies": {
-    "@types/node": "^22.10.5",
+    "@types/node": "^24.13.3",
     "typescript": "^5.9.3"
   }
 }

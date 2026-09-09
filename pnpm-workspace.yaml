@@ -1,3 +1,12 @@
 packages:
   - 'apps/**'
   - 'packages/**'
+
+overrides:
+  esbuild: ^0.25.0
+  js-yaml: ^4.1.1
+  lodash: ^4.17.23
+  diff: ^4.0.4
+  next: 15.5.25
+  react: 19.1.0
+  react-dom: 19.1.0

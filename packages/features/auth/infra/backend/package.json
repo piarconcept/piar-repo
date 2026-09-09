@@ -25,7 +25,7 @@
     "@piar/infra-backend-common-security": "workspace:*"
   },
   "devDependencies": {
-    "@types/node": "^22.10.5",
+    "@types/node": "^24.13.3",
     "@vitest/coverage-v8": "^2.1.9",
     "typescript": "^5.9.3",
     "typescript-eslint": "^8.31.1",

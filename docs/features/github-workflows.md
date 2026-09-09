@@ -2,7 +2,7 @@
 
 **Status**: ✅ Active  
 **Created**: 2026-01-15  
-**Last Updated**: 2026-05-07
+**Last Updated**: 2026-09-09
 
 ## Overview
 
@@ -22,17 +22,19 @@ This document describes the GitHub Actions workflows configured for continuous i
 **Steps**:
 
 1. **Checkout code** - Checks out the repository code
-2. **Setup Node.js 20** - Installs Node.js version 20
+2. **Setup Node.js** - Installs the exact version from `.nvmrc`
 3. **Install pnpm 10.28.0** - Installs the exact pnpm version used in the project
 4. **Setup pnpm cache** - Caches pnpm store for faster subsequent runs
 5. **Install dependencies** - Runs `pnpm install --frozen-lockfile`
 6. **Run verification** - Executes `pnpm verify` which runs:
    - Local generated artifact cleanup and check
+   - Runtime and dependency compatibility preflights
    - Install dependencies in an isolated scratch copy
    - Build all packages
    - Type checking
    - Formatting check
    - Test participation policy
+   - Repository tooling regression tests
    - Tests without coverage
    - Linting
    - Final generated artifact cleanup and worktree drift check
@@ -41,7 +43,7 @@ This document describes the GitHub Actions workflows configured for continuous i
 **Environment**:
 
 - Runner: `ubuntu-latest`
-- Node.js: `20`
+- Node.js: `24.20.0`, sourced from `.nvmrc`
 - pnpm: `10.28.0`
 
 **Caching Strategy**:
@@ -96,7 +98,7 @@ All pull requests to `main` will automatically trigger the CI workflow. The PR c
 ### CI Fails on Install
 
 - Check if `pnpm-lock.yaml` is committed
-- Ensure Node.js version matches (20)
+- Ensure Node.js version exactly matches `.nvmrc` (`24.20.0`)
 - Verify pnpm version matches (10.28.0)
 
 ### CI Fails on Build
@@ -137,10 +139,10 @@ Potential improvements to consider:
 ## Maintenance
 
 - Review workflow performance monthly
-- Update Node.js and pnpm versions as needed
+- Update Node.js only through `.nvmrc`, then align engines, lockfile, docs, and runtime tests
 - Adjust caching strategy if build times increase
 - Monitor artifact storage usage
 
 ## Last Updated
 
-7 May 2026 - Aligned CI documentation with current verify and clean commands
+9 September 2026 - Made `.nvmrc` the Node.js 24 source for CI and verification

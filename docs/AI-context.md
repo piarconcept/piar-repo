@@ -27,7 +27,7 @@ Start here. This file is the canonical index and rules for documentation and dev
 ### Product Concept
 
 1. `concept/Readme.md` - Product concept entrypoint, folder tree, app ownership contract, discovery questions, and build-plan workflow
-2. `concept/initial-questions/README.md` - Required initial question gate before template personalization
+2. `concept/initial-questions/README.md` - Required initial question gate, including the removable Terraform profile decision, before template personalization
 3. `concept/apps/README.md` - Concept app discovery, app map template, and app ownership rules
 4. `concept/apps/example-app/README.md` - Example app contract only, not a required product app
 
@@ -58,45 +58,57 @@ Start here. This file is the canonical index and rules for documentation and dev
 21. `waves/2026-06-07/README.md` - Backoffice accounts/search feature-boundary refactor day plan
 22. `waves/2026-06-07/2026-06-07_wave_1/README.md` - Accounts/search API package migration wave
 23. `waves/2026-06-07/2026-06-07_wave_1/2026-06-07_wave_1_prompt_AA.md` - Accounts/search feature-boundary implementation prompt
-24. `waves/template-day.md` - Template for day-level wave orchestration
-25. `waves/template-wave.md` - Template for a single wave definition
-26. `waves/template-prompt.md` - Template for a standalone wave prompt
+24. `waves/2026-09-09/README.md` - Node.js 24 runtime migration day plan
+25. `waves/2026-09-09/2026-09-09_wave_1/README.md` - Exact runtime, dependency, and build-ownership migration wave
+26. `waves/2026-09-09/2026-09-09_wave_1/2026-09-09_wave_1_prompt_AA.md` - Node.js 24 implementation prompt
+27. `waves/2026-09-09/2026-09-09_wave_1/2026-09-09_wave_1_prompt_QA.md` - Node.js 24 integrated QA prompt
+28. `waves/2026-09-09/2026-09-09_wave_1/implementation-report.md` - Node.js 24 implementation and verification evidence
+29. `waves/template-day.md` - Template for day-level wave orchestration
+30. `waves/template-wave.md` - Template for a single wave definition
+31. `waves/template-prompt.md` - Template for a standalone wave prompt
 
 ### Package Documentation
 
-27. `features/domain-models.md` - `@piar/domain-models`
-28. `features/domain-fields.md` - `@piar/domain-fields`
-29. `features/ui-components-atomic-design.md` - `@piar/ui-components`
-30. `features/auth-card-refactoring.md` - AuthCard refactor notes
-31. `features/health-feature.md` - Health feature architecture
-32. `features/auth-feature.md` - Auth feature architecture
-33. `features/infra-backend-security.md` - Backend security package
-34. `features/infra-client-seo.md` - SEO infrastructure
-35. `features/error-handling-system.md` - Error handling system
-36. `features/nextauth-authentication.md` - NextAuth v5 in backoffice
+32. `features/domain-models.md` - `@piar/domain-models`
+33. `features/domain-fields.md` - `@piar/domain-fields`
+34. `features/ui-components-atomic-design.md` - `@piar/ui-components`
+35. `features/auth-card-refactoring.md` - AuthCard refactor notes
+36. `features/health-feature.md` - Health feature architecture
+37. `features/auth-feature.md` - Auth feature architecture
+38. `features/infra-backend-security.md` - Backend security package
+39. `features/infra-client-seo.md` - SEO infrastructure
+40. `features/error-handling-system.md` - Error handling system
+41. `features/nextauth-authentication.md` - NextAuth v5 in backoffice
 
 ### Applications
 
-37. `features/web-bff-application.md` - Web BFF documentation
-38. `features/backoffice-bff-application.md` - Backoffice BFF documentation
+42. `features/web-bff-application.md` - Web BFF documentation
+43. `features/backoffice-bff-application.md` - Backoffice BFF documentation
 
 ### Templates
 
-39. `features/TEMPLATE.md` - Template for new docs
+44. `features/TEMPLATE.md` - Template for new docs
 
 ### Architecture Fix Memory
 
-40. `architecture/fixes/README.md` - Index and rules for architecture fix notes
-41. `architecture/fixes/TEMPLATE.md` - Template for architecture fix notes
-42. `architecture/fixes/2026-06-07-backoffice-feature-boundaries.md` - Backoffice accounts/search feature package boundary fix
-43. `architecture/fixes/2026-05-08-bounded-list-contract.md` - Bounded collection-query contract and removal of whole-table `getAll` reads
-44. `architecture/fixes/2026-05-07-template-wave-clean-baseline.md` - Wave workflow, clean command, and verification hardening baseline
+45. `architecture/fixes/README.md` - Index and rules for architecture fix notes
+46. `architecture/fixes/TEMPLATE.md` - Template for architecture fix notes
+47. `architecture/fixes/2026-09-09-framework-dependency-alignment.md` - Repository-owned Next, React, Nest integration, and pnpm compatibility contract
+48. `architecture/fixes/2026-09-09-single-owner-dependency-builds.md` - Graph-owned shared dependency build coordination
+49. `architecture/fixes/2026-06-07-backoffice-feature-boundaries.md` - Backoffice accounts/search feature package boundary fix
+50. `architecture/fixes/2026-05-08-bounded-list-contract.md` - Bounded collection-query contract and removal of whole-table `getAll` reads
+51. `architecture/fixes/2026-05-07-template-wave-clean-baseline.md` - Wave workflow, clean command, and verification hardening baseline
 
 ### Operational Learning
 
-45. `learning-log/README.md` - Index of resolved incidents and important fixes
-46. `learning-log/2026-06-05-format-check-deleted-files.md` - Format check failed on tracked files deleted in the working tree
-47. `learning-log/TEMPLATE.md` - Template for learning-log entries
+52. `learning-log/README.md` - Index of resolved incidents and important fixes
+53. `learning-log/2026-09-09-node24-runtime-compatibility.md` - Exact Node.js 24 migration and native compatibility guardrails
+54. `learning-log/2026-06-05-format-check-deleted-files.md` - Format check failed on tracked files deleted in the working tree
+55. `learning-log/TEMPLATE.md` - Template for learning-log entries
+
+### Template Evolution Audits
+
+56. `features/catalonia-os-template-backport-audit.md` - Selective backport audit, fixed-bug inventory, and Terraform extraction roadmap from Catalonia OS
 
 ## Repository Governance
 
@@ -169,4 +181,4 @@ Start here. This file is the canonical index and rules for documentation and dev
 
 ## Last Updated
 
-7 June 2026 - Added backoffice feature boundary wave and architecture fix
+9 September 2026 - Indexed the Node.js 24 migration wave, architecture fixes, and compatibility learning

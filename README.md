@@ -16,7 +16,7 @@ We still use this template as the base for all our MVPs and for projects that we
 
 Prerequisites:
 
-- Node.js 20.x (recommended via `nvm` — see `.nvmrc`)
+- Node.js 24.20.0 (required via `nvm` — see `.nvmrc`)
 - pnpm 10.28.0
 
 Database requirements:
@@ -31,7 +31,9 @@ Database requirements:
 # Optional but recommended
 nvm use
 
+pnpm runtime:check
 pnpm install
+pnpm dependencies:check
 cp .env.example .env
 
 pnpm verify
@@ -72,6 +74,8 @@ piar-repo/
 
 Integrated and validated in this template:
 
+- Node.js 24.20.0 with `.nvmrc`-driven local and CI runtime checks
+- Next.js 15.5.25, React 19.1.0, NestJS 11, TypeScript 5.9, and pnpm 10.28.0
 - Auth with access + refresh session flow
 - Accounts admin module (CRUD + admin safety rules)
 - Backoffice search (accounts collection)
@@ -103,6 +107,9 @@ pnpm typecheck          # Type check all packages/apps
 pnpm lint               # Lint all packages/apps
 pnpm test               # Run all tests without coverage
 pnpm test:coverage      # Run all tests with coverage
+pnpm runtime:check      # Reject local, engine, or CI Node.js drift
+pnpm dependencies:check # Reject incompatible framework/package drift
+pnpm test:scripts       # Run repository tooling regression tests
 pnpm verify             # Full verification in an isolated copy with artifact hygiene
 pnpm clean              # Format, clean generated artifacts, and finish with verify
 ```
@@ -117,6 +124,10 @@ pnpm clean              # Format, clean generated artifacts, and finish with ver
 ## Documentation
 
 Start here: `docs/AI-context.md`
+
+Before personalizing this template into a product, answer the required questions in
+`docs/concept/initial-questions/README.md`, including whether to retain the optional
+AWS/Terraform profile when that profile is installed.
 
 Key docs:
 

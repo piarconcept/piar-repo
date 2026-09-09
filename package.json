@@ -24,8 +24,11 @@
     "artifacts:clean": "node scripts/generated-artifacts.mjs clean",
     "lint": "turbo lint",
     "test:policy": "node scripts/check-test-participation.mjs",
+    "test:scripts": "node --test scripts/*.test.mjs",
     "test": "turbo test",
     "test:coverage": "turbo test:coverage",
+    "dependencies:check": "node scripts/check-dependency-alignment.mjs",
+    "runtime:check": "node scripts/check-node-runtime.mjs",
     "verify": "bash scripts/verify-all.sh",
     "prepare": "husky"
   },
@@ -46,6 +49,8 @@
     "husky": "^9.1.7",
     "lint-staged": "^15.2.10",
     "prettier": "^3.4.2",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
     "tough-cookie": "^6.0.0",
     "turbo": "^2.7.4",
     "typescript": "^5.9.3",
@@ -56,16 +61,8 @@
       "prettier --write"
     ]
   },
-  "pnpm": {
-    "overrides": {
-      "esbuild": "^0.25.0",
-      "js-yaml": "^4.1.1",
-      "lodash": "^4.17.23",
-      "diff": "^4.0.4"
-    }
-  },
   "private": true,
   "engines": {
-    "node": "20.x"
+    "node": ">=24.20.0 <25"
   }
 }
