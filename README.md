@@ -4,13 +4,16 @@ Production-ready monorepo template for building modern web applications with Nex
 
 ## Used in Production
 
-This fast-start template has already been used to launch production projects:
+This fast-start template powers our own production platforms:
 
-- [traips-events.com](https://www.traips-events.com)
-- [piarconcept.com](https://www.piarconcept.com)
-- [outsidecanvas.com](https://www.outsidecanvas.com)
+- piarconcept.com
+- outsidecanvas.com
+- Catalonia HC and its complete digital operating system
 
-We still use this template as the base for all our MVPs and for projects that we expect to scale hard. We keep feeding lessons learned from those repos back into this template, and we will keep improving it with what we learn across the rest of our production codebases.
+We also use this template as the foundation for client projects delivered through
+[piarconcept.com](https://www.piarconcept.com). It remains the base for our MVPs and for projects
+that we expect to scale hard. We keep feeding lessons learned from those repositories back into
+the template and improving it with what we learn across our production codebases.
 
 ## Quick Start
 
